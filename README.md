@@ -2,14 +2,13 @@
 
 One file. Upload `digital-rose.html` to any static host — that is the whole piece.
 
-2021 hic et nunc remake (scratch-off rose) plus two new modes: **genome** and **live**.
+2021 hic et nunc remake of Jonathan Puckey’s Paper.js [division raster](https://paperjs.org/examples/division-raster/) plus two new modes: **genome** and **live**.
 
 ## Open it
 
 Rose and genome work from `file://`. Live camera needs a secure origin (localhost or https).
 
 ```bash
-cd /workspace/pandemic-rose
 python3 -m http.server 8765
 ```
 
@@ -26,11 +25,11 @@ Deep links are shareable. The corner switcher updates the query string.
 
 ## Modes
 
-**rose** — warm-taupe veil (`#7A716D`). Swipe erases it in fat, irreversible ~26px square tiles, exposing a pink garden rose on green bokeh. Soft ticks + short vibrate on each new tile. Remaining veil number in the corner.
+**rose** — the photo stays hidden. The first frame is one rectangle filled with the cover-fit average of the whole rose (that muddy taupe/olive is the average, not a designed overlay). Moving or swiping splits the cell under the pointer in half along its long axis — landscape into two columns, portrait into two rows — and each child is filled with the average color of its region. You work the rose into existence as an irreversible mosaic; nothing photographic is drawn until cells are tiny. Soft ticks + short vibrate on each split. Remaining unworked area in the corner.
 
 **genome** — no hidden photo. The swipe *is* the plant. Fast = skinny, noisy, high; slow circles / lingering = fat petals and a held note. `new` reseeds. Tweak the `GENOME` object near the top of the script.
 
-**live** — same veil over a `<video>` (not an iframe). Default is your camera (“scratch opens you”). Presets: **you** / **seamount** / **reel**. If a stream is idle or blocked, it falls back to camera, then to the rose still.
+**live** — same division mosaic, sampling the current video frame instead of the still. Default is your camera (“scratch opens you”). Presets: **you** / **seamount** / **reel**. If a stream is idle or blocked, it falls back to camera, then to the rose still.
 
 ## Sound & haptic
 
